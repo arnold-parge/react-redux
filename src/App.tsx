@@ -11,7 +11,6 @@ function App() {
       <Counter />
       <IncrementButton />
       <DecrementButton />
-      <UserForm />
       <CounterLoader />
     </div>
   );
