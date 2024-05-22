@@ -1,5 +1,10 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 
 .App-logo {
@@ -35,4 +40,31 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* .container {
+} */
+
+.counter {
+  font-size: 20px;
+}
+
+button {
+  border: 1px solid black;
+  padding: 16px 32px;
+  background: #61dafb;
+  border-radius: 8px;
+  color: black;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+input[type="text"] {
+  border: 1px solid black;
+  padding: 16px;
+  background: #61dafb43;
+  border-radius: 8px;
+  color: black;
+  cursor: pointer;
+  font-size: 18px;
 }
