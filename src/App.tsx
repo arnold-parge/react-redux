@@ -2,9 +2,8 @@ import './App.css';
 import { Counter } from './components/Counter';
 import { IncrementButton } from './components/Increment';
 import { DecrementButton } from './components/Decrement';
-import { FirstNameInput } from './components/FirstNameInput';
-import { LastNameInput } from './components/LastNameInput';
 import { CounterLoader } from './components/CounterLoader';
+import { UserForm } from './components/UserForm';
 
 function App() {
   return (
@@ -12,8 +11,7 @@ function App() {
       <Counter />
       <IncrementButton />
       <DecrementButton />
-      <FirstNameInput />
-      <LastNameInput />
+      <UserForm />
       <CounterLoader />
     </div>
   );
