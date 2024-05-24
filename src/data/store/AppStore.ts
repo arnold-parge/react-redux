@@ -1,15 +1,30 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { Middleware, configureStore } from '@reduxjs/toolkit'
 import { counterReducer } from '../slices/CounterSlice';
-import { nameReducer } from '../slices/UserSlice';
+import { UserState, nameReducer } from '../slices/UserSlice';
+import { CounterState } from '../types/CounterState';
 
-export const appStore = configureStore({
+const customLogger: Middleware = (store) => (next) => (action) => {
+  console.log('Dispatching:', action);
+  const result = next(action);
+  console.log('Next state:', store.getState());
+  return result;
+};
+
+export const appStore = configureStore<RootState>({
   reducer: {
     counter: counterReducer,
     name: nameReducer,
   },
-})
+  middleware: (getDefaultMiddleware: any) => {
+    return getDefaultMiddleware().concat(customLogger);
+  },
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof appStore.getState>;
+export interface RootState{
+  counter: CounterState;
+  name: UserState;
+};
+
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof appStore.dispatch;
