@@ -2,6 +2,7 @@ import { Middleware, configureStore } from '@reduxjs/toolkit'
 import { counterReducer } from '../slices/CounterSlice';
 import { UserState, nameReducer } from '../slices/UserSlice';
 import { CounterState } from '../types/CounterState';
+import type {GetDefaultMiddleware} from "@reduxjs/toolkit/src/getDefaultMiddleware";
 
 const customLogger: Middleware = (store) => (next) => (action) => {
   console.log('Dispatching:', action);
@@ -15,7 +16,7 @@ export const appStore = configureStore<RootState>({
     counter: counterReducer,
     name: nameReducer,
   },
-  middleware: (getDefaultMiddleware: any) => {
+  middleware: (getDefaultMiddleware: GetDefaultMiddleware) => {
     return getDefaultMiddleware().concat(customLogger);
   },
 });
